@@ -1,20 +1,34 @@
+
 {
-  "xsappname": "emrej",
+  "xsappname": "emrej-46817d53trial_trail-mrdcth0y-dev",
   "tenant-mode": "dedicated",
-  "description": "Security profile of called application",
   "scopes": [
     {
-      "name": "uaa.user",
-      "description": "UAA"
+      "name": "$XSAPPNAME.RiskViewer",
+      "description": "RiskViewer"
+    },
+    {
+      "name": "$XSAPPNAME.RiskManager",
+      "description": "RiskManager"
     }
   ],
+  "attributes": [],
   "role-templates": [
     {
-      "name": "Token_Exchange",
-      "description": "UAA",
+      "name": "RiskViewer",
+      "description": "generated",
       "scope-references": [
-        "uaa.user"
-      ]
+        "$XSAPPNAME.RiskViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "RiskManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskManager"
+       ],
+      "attribute-references": []
     }
   ]
 }

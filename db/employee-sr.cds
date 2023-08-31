@@ -37,11 +37,18 @@ entity Employees {
         @title: 'Gender'
         gender     : String;
 
+        @title: 'OnLeave'
+        OnLeave : Boolean;
+
+        teamlead : Association to Lead;
+
         @title: 'Department'
         department : Association to Department;
 
         @title: 'Projects'
         projects   : Association to Project;
+
+       
 }
 
 entity Department {
@@ -59,6 +66,7 @@ entity Department {
 
         @title: 'City'
         city      : String;
+
 
         @title: 'Employee Name'
         employees : Association to many Employees
@@ -90,4 +98,15 @@ entity Country {
         @title: 'Employee Name'
         employees : Association to many Employees
                         on employees.country = $self;
+}
+
+
+entity Lead {
+
+    Key ID  : Integer;
+
+    name : String;
+
+    employees : Association to many Employees
+                        on employees.teamlead = $self;
 }

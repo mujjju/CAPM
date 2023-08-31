@@ -1,3 +1,22 @@
-DELETE http://localhost:4004/CatalogService/Employees/1
+GET  https://46817d53trial-trail-mrdcth0y-dev-emrej-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/Employees
+Authorization: Basic muzammilansari865@gmail.com
+Content-Type: : application/json
 
-
+  {
+      "ID": 22,
+      "fname": "muzammil",
+      "lname": "Ansari",
+      "desig": "CAPM,UI5,HTML",
+      "email": "muzammilansari865@gmail.com",
+      "skills": "CAPM, UI5",
+      "country_ID": 1,
+      "State": "Gujarat",
+      "city": "Surat",
+      "doj": "2023-03-17",
+      "yoe": 1,
+      "gender": "Male",
+      "OnLeave": "true",
+      "department_ID": null,
+      "projects_ID": null
+    },
+   
