@@ -8,7 +8,7 @@ modules:
     path: gen/srv
     requires:
       - name: emrej-db
-      - name: uaa_emrej
+      - name: emrej-xsuaa-service
     provides:
       - name: srv-api
         properties:
@@ -59,7 +59,7 @@ modules:
         parameters:
           service-key:
             name: emrej-repo-host-key
-      - name: uaa_emrej
+      - name: emrej-xsuaa-service
         parameters:
           service-key:
             name: uaa_emrej-key
@@ -79,6 +79,22 @@ modules:
           existing_destinations_policy: ignore
     build-parameters:
       no-source: true
+
+  - name: emrej
+    type: approuter.nodejs
+    path: app/ # from cds.env.folders. Consider also cds.env.build.target -> gen/app
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 512M
+      memory: 512M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-binding # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: emrej-xsuaa-service
 resources:
   - name: emrej-db
     type: com.sap.xs.hdi-container
@@ -98,27 +114,25 @@ resources:
         HTML5Runtime_enabled: true
         version: 1.0.0
       service: destination
-      service-name: emrej-destination-service
       service-plan: lite
-  - name: uaa_emrej
+  - name: emrej-xsuaa-service
     type: org.cloudfoundry.managed-service
     parameters:
       path: ./xs-security.json
       service: xsuaa
-      service-name: emrej-xsuaa-service
       service-plan: application
       config:
         xsappname: emrej-${org}-${space}
         tenant-mode: dedicated
         role-collections:
-          - name: 'RiskManager-${space}'
+          - name: 'EmployeeManager-${space}'
             description: Manage Risks
             role-template-references:
-              - $XSAPPNAME.RiskManager
-          - name: 'RiskViewer-${space}'
+              - $XSAPPNAME.EmployeeManager
+          - name: 'EmployeeViewer-${space}'
             description: View Risks
             role-template-references:
-              - $XSAPPNAME.RiskViewer
+              - $XSAPPNAME.EmployeeViewer
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

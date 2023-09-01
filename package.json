@@ -33,7 +33,6 @@
         }
       ]
     },
-
     "requires": {
       "db": {
         "kind": "hana-cloud"
@@ -45,7 +44,8 @@
         "auth": {
           "kind": "xsuaa"
         }
-      }
+      },
+      "auth": "xsuaa"
     }
   },
   "devDependencies": {

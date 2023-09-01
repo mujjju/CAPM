@@ -1,34 +1,33 @@
-
 {
-  "xsappname": "emrej-46817d53trial_trail-mrdcth0y-dev",
-  "tenant-mode": "dedicated",
-  "scopes": [
-    {
-      "name": "$XSAPPNAME.RiskViewer",
-      "description": "RiskViewer"
-    },
-    {
-      "name": "$XSAPPNAME.RiskManager",
-      "description": "RiskManager"
-    }
-  ],
-  "attributes": [],
-  "role-templates": [
-    {
-      "name": "RiskViewer",
-      "description": "generated",
-      "scope-references": [
-        "$XSAPPNAME.RiskViewer"
-      ],
-      "attribute-references": []
-    },
-    {
-      "name": "RiskManager",
-      "description": "generated",
-      "scope-references": [
-        "$XSAPPNAME.RiskManager"
-       ],
-      "attribute-references": []
-    }
-  ]
+ "xsappname": "emrej-46817d53trial_trail-mrdcth0y-dev",
+ "tenant-mode": "dedicated",
+ "scopes": [
+  {
+   "name": "$XSAPPNAME.EmployeeViewer",
+   "description": "EmployeeViewer"
+  },
+  {
+   "name": "$XSAPPNAME.EmployeeManager",
+   "description": "EmployeeManager"
+  }
+ ],
+ "attributes": [],
+ "role-templates": [
+  {
+   "name": "EmployeeViewer",
+   "description": "generated",
+   "scope-references": [
+    "$XSAPPNAME.EmployeeViewer"
+   ],
+   "attribute-references": []
+  },
+  {
+   "name": "EmployeeManager",
+   "description": "generated",
+   "scope-references": [
+    "$XSAPPNAME.EmployeeManager"
+   ],
+   "attribute-references": []
+  }
+ ]
 }
